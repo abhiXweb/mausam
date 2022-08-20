@@ -40,3 +40,41 @@ code {
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
+
+.weather-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+}
+
+.queryHead h2 {
+  font-size: 5rem;
+}
+
+.queryCountry {
+  font-size: 1.5rem;
+}
+
+#search-form {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 5px;
+}
+
+input#query {
+  padding: 1px 5px;
+  border: none;
+  height: 2rem;
+  border-radius: 5px;
+}
+
+#search-form button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #41617c;
+  padding: 5px 10px;
+  cursor: pointer;
+}
