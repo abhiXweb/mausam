@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { FaSearchLocation } from 'react-icons/fa';
+import loader from "../assets/images/mausam-loader.gif"
 const MAUSAM_KEY = '8ea6880a2521095166643611c6b4123a';
 const Weather = () => {
     let [query, setQuery] = useState("");
@@ -38,7 +39,7 @@ const Weather = () => {
                     .then(response => response.json())
                     .then((finalData) => {
                         setweather(finalData)
-                        setLoading(true)
+                        setLoading(false)
                     })
             })
     }
@@ -50,6 +51,13 @@ const Weather = () => {
                         <div className="weather-head">
                             <div className="queryHead">
                                 <h2>{data}<span className="queryCountry">, IN</span></h2>
+                                {loading && <img src={loader} className="mausam-loader" alt="Mausam Loader" />}
+                                {!loading ?
+                                    <div>
+                                        <h2>{weather.main.temp}</h2>
+                                        <p>{weather.name}</p>
+                                    </div>
+                                    : ""}
                             </div>
                             <div className="query">
                                 <form id="search-form" onSubmit={searchWeather}>
