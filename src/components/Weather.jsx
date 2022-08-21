@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react"
 import { FaSearchLocation } from 'react-icons/fa';
-// const MAUSAM_KEY = 'dafa96e48ec2198246b41aac88ca77b3';
+const MAUSAM_KEY = '8ea6880a2521095166643611c6b4123a';
 const Weather = () => {
-    const [query, setQuery] = useState("");
-    // const [data, setData] = useState("");
-    // const [error, setError] = useState("");
-    // const [loading, setLoading] = useState(true);
+    let [query, setQuery] = useState("");
+    let [data, setData] = useState("Mandi");
+    let [weather, setweather] = useState();
+    let [loading, setLoading] = useState(true);
 
 
-    // useEffect(() => {
-    //     fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=dafa96e48ec2198246b41aac88ca77b3`)
-    //         .then(response => response.json())
-    //         .then(finalData => console.log(finalData))
-    //         .catch(err => console.log(err))
-    //         .finally(console.log("LOADED FINALLY"))
-    // }, [])
+    useEffect(() => {
+        getLatLong()
+    }, [data])
 
     // Handling Query
     function handleQuery(event) {
@@ -23,10 +19,29 @@ const Weather = () => {
 
     // Search Funtionality
     function searchWeather(e) {
+        setData(query)
         e.preventDefault();
-        alert(query);
     }
 
+    function getLatLong() {
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${data}&appid=${MAUSAM_KEY}`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(
+                        `This is an HTTP error: The status is ${response.status}`
+                    );
+                }
+                return response.json();
+            })
+            .then((latLong) => {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latLong[0].lat}&lon=${latLong[0].lon}&appid=${MAUSAM_KEY}`)
+                    .then(response => response.json())
+                    .then((finalData) => {
+                        setweather(finalData)
+                        setLoading(true)
+                    })
+            })
+    }
     return (
         <section className="weather">
             <div className="container">
@@ -34,7 +49,7 @@ const Weather = () => {
                     <div className="hero-img">
                         <div className="weather-head">
                             <div className="queryHead">
-                                <h2>Mandi<span className="queryCountry">, IN</span></h2>
+                                <h2>{data}<span className="queryCountry">, IN</span></h2>
                             </div>
                             <div className="query">
                                 <form id="search-form" onSubmit={searchWeather}>
