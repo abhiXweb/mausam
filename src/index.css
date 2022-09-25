@@ -32,7 +32,13 @@ code {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   border-bottom: none;
-  background: rgb(65, 97, 124);
+  background: url("https://res.cloudinary.com/dxfq3iotg/image/upload/v1557323760/weather.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .weathers {
@@ -44,12 +50,14 @@ code {
 .weather-head {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  color: #fff;
+  align-items: flex-start;
+  color: rgb(65, 97, 124);
+  width: 100%;
 }
 
 .queryHead h2 {
   font-size: 5rem;
+  margin-bottom: 0;
 }
 
 .queryCountry {
@@ -61,6 +69,7 @@ code {
   align-items: center;
   background: white;
   border-radius: 5px;
+  border: 1px solid rgb(65, 97, 124);
 }
 
 input#query {
@@ -105,4 +114,11 @@ input#query {
 .week .week-day,
 .week .week-tem {
   margin: 5px;
+}
+
+@media only screen and (max-width: 1230px) {
+  .weather-head {
+    width: auto;
+    flex-direction: column;
+  }
 }

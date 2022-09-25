@@ -24,11 +24,6 @@ const Weather = () => {
   }
 
   function getLatLong() {
-    // navigator.geolocation.getCurrentPosition(function (position) {
-    //     console.log("Latitude is :", position.coords.latitude);
-    //     console.log("Longitude is :", position.coords.longitude);
-    // });
-
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${data}&appid=${MAUSAM_KEY}`
     )
@@ -60,7 +55,15 @@ const Weather = () => {
             <div className="hero-img">
               <div className="weather-head">
                 <div className="queryHead">
-                  <h2>
+                    <div className="curr-day-date">
+                        <h3>Sunday</h3>
+                        <p>25 September, 2022 Delhi, India</p>
+                    </div>
+                    <div className="curr-weather-details">
+                        <h2>32 °C</h2>
+                        <p>Cloudy</p>
+                    </div>
+                  {/* <h2>
                     {data}
                     <span className="queryCountry">, IN</span>
                   </h2>
@@ -78,7 +81,8 @@ const Weather = () => {
                     </div>
                   ) : (
                     ""
-                  )}
+                  )} */}
+
                 </div>
                 <div className="query">
                   <form id="search-form" onSubmit={searchWeather}>
@@ -88,6 +92,7 @@ const Weather = () => {
                       id="query"
                       value={query}
                       onChange={handleQuery}
+                      placeholder = "Search"
                     />
                     <button>
                       <FaSearchLocation />
