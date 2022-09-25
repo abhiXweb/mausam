@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,7 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -79,10 +79,30 @@ input#query {
   cursor: pointer;
 }
 
-.mausam-loader{
+.mausam-loader {
   width: 50px;
   height: 50px;
   position: absolute;
   left: 50%;
   right: 50%;
+}
+
+.mausam-week {
+  display: flex;
+}
+
+.weathers .week {
+  width: calc(100% / 7);
+  text-align: center;
+  padding: 1rem;
+  border-right: 1px solid #d5d5d5;
+}
+
+.weathers .week:last-child {
+  border-right: none;
+}
+
+.week .week-day,
+.week .week-tem {
+  margin: 5px;
 }
